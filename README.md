@@ -1,8 +1,5 @@
-# React + Vite
+# Driving School - Safe Drive, Safe Life
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The **Driving School** (Safe Drive, Safe Life) project is a full-stack web application designed to raise awareness about road safety and responsible driving. The app features a responsive image slider, user authentication, and informative sections like About and Contact Us. Built with a modern stack, the frontend utilizes **React** with **Vite**, and the backend is powered by **Node.js** and **Express** (if you have a backend, otherwise you can remove backend references).
