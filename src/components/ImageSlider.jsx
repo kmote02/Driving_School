@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import './slider.css';  // Import the CSS for the slider
 
@@ -95,6 +94,14 @@ const ImageSlider = () => {
         return () => clearInterval(timer);
     }, []);
 
+    // Scroll to the section based on the section ID
+    const scrollToSection = (sectionId) => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    };
+
     return (
         <div className="slider">
             <div className="list">
@@ -120,12 +127,30 @@ const ImageSlider = () => {
 
             {/* Buttons (Login, About, Contact Us) */}
             <div className="button-group-row">
-                <button className="slider-button">Login</button>
-                <button className="slider-button">About</button>
-                <button className="slider-button">Contact</button>
+                {/* Open login in a new tab */}
+                <button
+                    className="slider-button"
+                    onClick={() => window.open('/login', '_blank')} // Open login in a new tab
+                >
+                    Login
+                </button>
+
+                {/* Scroll to About and Contact sections */}
+                <button
+                    className="slider-button"
+                    onClick={() => scrollToSection('about-section')}
+                >
+                    About
+                </button>
+                <button
+                    className="slider-button"
+                    onClick={() => scrollToSection('contact-section')}
+                >
+                    Contact
+                </button>
             </div>
 
-            {/* Thumbnail*/ }
+            {/* Thumbnail */}
             <div className="thumbnail">
                 {images.map((image, index) => (
                     <div

@@ -1,46 +1,111 @@
+/* Background image only for the login page */
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:wght@400;700&display=swap');
+.login-page {
+    background-image: url('../assets/8.jpg');
+    /* Path to your background image */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+    font-family: 'Alegreya', serif;
+    font-weight: bold;
+}
+
+/* Styling for the login container */
 .login-container {
+    background-color: rgba(254, 250, 224, 0.8);
+    /* 80% transparent background */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 100%;
     max-width: 400px;
-    margin: 100px auto;
-    padding: 20px;
-    background-color: #f4f4f4;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h2 {
     text-align: center;
-    margin-bottom: 20px;
+    position: absolute;
+    color: #0b090a;
+    font-size: 1.8rem;
+    box-sizing: border-box;
+    
 }
 
+/* Input fields styling */
 .input-group {
     margin-bottom: 15px;
+    text-align: left;
 }
 
 .input-group label {
     display: block;
-    font-size: 14px;
     margin-bottom: 5px;
+    color: #0b090a;
+    font-weight: bold;
 }
 
 .input-group input {
     width: 100%;
     padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
+    font-size: 1rem;
+    color: #0b090a;
+    border: 1px solid #ddd;
     border-radius: 5px;
+    box-sizing: border-box;
 }
 
-button {
+/* Button styling */
+button[type="submit"] {
     width: 100%;
     padding: 10px;
-    font-size: 16px;
-    background-color: #333;
-    color: #fff;
+    margin-top: 10px;
+    font-size: 1rem;
+    background-color: #0b090a;
+    color: #fefae0;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #555;
+button[type="submit"]:hover {
+    background-color: #343a40;
+}
+
+/* Ensure responsiveness */
+@media (max-width: 768px) {
+    .login-container {
+        font-size: 1.2rem;
+        /* Reduce font size on smaller screens */
+        padding: 15px;
+        /* Adjust padding for smaller screens */
+        max-width: 80%;
+        /* Make the login container adjust to 90% of the viewport width */
+    }
+
+    button[type="submit"] {
+        font-size: 0.9rem;
+        /* Reduce button font size on smaller screens */
+    }
+
+    .input-group input {
+        font-size: 0.9rem;
+        /* Adjust input font size for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        font-size: 1rem;
+        /* Further reduce font size on very small screens */
+        padding: 10px;
+        /* Further reduce padding */
+    }
+
+    button[type="submit"] {
+        font-size: 0.8rem;
+    }
+
+    .input-group input {
+        font-size: 0.8rem;
+    }
 }
