@@ -12,6 +12,16 @@ const Login = () => {
     console.log('Password:', password);
   };
 
+  const handleForgotPassword = () => {
+    // Add your forgot password logic here
+    console.log('Forgot password clicked');
+  };
+
+  const handleRegister = () => {
+    // Add your register logic here or navigate to the registration page
+    console.log('Register clicked');
+  };
+
   return (
     <div className="login-page"> {/* Apply background only to the login page */}
       <div className="login-container">
@@ -39,6 +49,16 @@ const Login = () => {
           </div>
           <button type="submit">Login</button>
         </form>
+
+        {/* Additional buttons for Forgot Password and Register */}
+        <div className="additional-buttons">
+          <button type="button" className="forgot-button" onClick={handleForgotPassword}>
+            (?) Forgot Password
+          </button>
+          <button type="button" className="register-button" onClick={handleRegister}>
+            Register
+          </button>
+        </div>
       </div>
     </div>
   );
