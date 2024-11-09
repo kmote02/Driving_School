@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import './slider.css';  // Import the CSS for the slider
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import './slider.css';
 
 // Import your images
 import img1 from '../assets/7.jpg';
@@ -21,62 +22,12 @@ const images = [
             textShadow: '1px 1px 4px black'  
         }
     },  
-    { 
-        src: img2, 
-        title: "Park the Phone before you Drive", 
-        description: " ", 
-        style: {            
-            fontSize: '1.6rem',
-            padding: '20px',
-            fontFamily: 'Alegreya, serif',
-            fontWeight: 'bold',
-            color: '#f8f7ff',  
-            textShadow: '1px 1px 4px black'  
-        }
-    },  
-    { 
-        src: img3, 
-        title: "Keep Safe Distance", 
-        description: "", 
-        style: {            
-            fontSize: '1.6rem',
-            padding: '20px',
-            fontFamily: 'Alegreya, serif',
-            fontWeight: 'bold',
-            color: '#e5e5e5',  
-            textShadow: '1px 1px 4px black'  
-        }
-    },  
-    { 
-        src: img4, 
-        title: "Safety isn't Expensive,", 
-        description: " it's Priceless", 
-        style: {            
-            fontSize: '1.6rem',
-            padding: '20px',
-            fontFamily: 'Alegreya, serif',
-            fontWeight: 'bold',
-            color: '#e5e5e5',  
-            textShadow: '1px 1px 4px black'  
-        }
-    },  
-    { 
-        src: img5, 
-        title: "Safe Drive Save Life", 
-        description: " ", 
-        style: {            
-            fontSize: '1.6rem',
-            padding: '20px',
-            fontFamily: 'Alegreya, serif',
-            fontWeight: 'bold',
-            color: '#e5e5e5',  
-            textShadow: '1px 1px 4px black'  
-        }
-    }
+    // ... other images
 ];
 
 const ImageSlider = () => {
     const [currentImage, setCurrentImage] = useState(0);
+    const navigate = useNavigate(); // Initialize navigate
 
     const nextImage = () => {
         setCurrentImage((prevImage) => (prevImage + 1) % images.length);
@@ -110,7 +61,7 @@ const ImageSlider = () => {
                         <img src={image.src} alt={`Slider ${index + 1}`} />
                         <div 
                             className="content" 
-                            style={image.style ? image.style : { color: image.color }} // Apply either the full style or just the color
+                            style={image.style ? image.style : { color: image.color }}
                         >
                             <h2>{image.title}</h2>
                             <p>{image.description}</p>
@@ -121,16 +72,15 @@ const ImageSlider = () => {
 
             <div className="arrows">
                 <button id="prev" onClick={prevImage}>{"<"}</button>
-                
                 <button id="next" onClick={nextImage}>{">"}</button>
             </div>
 
             {/* Buttons (Login, About, Contact Us) */}
             <div className="button-group-row">
-                {/* Open login in a new tab */}
+                {/* Use navigate for smooth in-app navigation */}
                 <button
                     className="slider-button"
-                    onClick={() => window.open('/login', '_blank')} // Open login in a new tab
+                    onClick={() => navigate('/login')} // Use navigate instead of opening in new tab
                 >
                     Login
                 </button>

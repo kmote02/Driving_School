@@ -1,21 +1,28 @@
-import React, { useState } from 'react';
-import { signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth'; // Import Firebase Auth methods
-import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
+import React, { useState, useEffect } from 'react';
+import { signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 import { auth } from '../../firebase';
-import './Login.css'; // Import your login-specific CSS file
+import './Login.css';
 
 const Login = () => {
   const [userId, setUserId] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(null); // To handle login or forgot password errors
-  const [message, setMessage] = useState(null); // To show success messages like password reset
+  const [error, setError] = useState(null);
+  const [message, setMessage] = useState(null);
 
-  const navigate = useNavigate(); // Initialize navigate function
+  const navigate = useNavigate();
+
+  // Redirect if already logged in
+  useEffect(() => {
+    if (auth.currentUser) {
+      navigate('/dashboard'); // Redirect to dashboard if user is already logged in
+    }
+  }, [navigate]);
 
   const handleLogin = (e) => {
     e.preventDefault();
 
-    // Reset message and error before new action
+    // Reset error and message before a new action
     setError(null);
     setMessage(null);
 
@@ -23,8 +30,7 @@ const Login = () => {
     signInWithEmailAndPassword(auth, userId, password)
       .then((userCredential) => {
         // Signed in successfully
-        const user = userCredential.user;
-        console.log('User signed in:', user);
+        console.log('User signed in:', userCredential.user);
         
         // Redirect to the dashboard after successful login
         navigate('/dashboard'); 
@@ -37,7 +43,7 @@ const Login = () => {
   };
 
   const handleForgotPassword = () => {
-    // Reset message and error before new action
+    // Reset message and error before a new action
     setError(null);
     setMessage(null);
 
@@ -58,7 +64,7 @@ const Login = () => {
   };
 
   const handleRegister = () => {
-    // Use navigate to go to the register page
+    // Navigate to the register page
     navigate('/register');
   };
 
