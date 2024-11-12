@@ -53,8 +53,6 @@
     border-radius: 5px;
     box-sizing: border-box;
 }
-
-/* Button styling */
 button[type="submit"] {
     width: 100%;
     padding: 10px;
@@ -71,24 +69,19 @@ button[type="submit"]:hover {
     background-color: #343a40;
 }
 
-/* Additional styling for the Forgot Password and Register buttons */
 .additional-buttons {
     margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    /* Add space between login form and additional buttons */
 }
 
 .forgot-button,
 .register-button {
     background-color: transparent;
-    /* Transparent background for the extra buttons */
     color: #0b090a;
-    /* Dark text color */
     border: none;
-    /* No border */
     cursor: pointer;
     font-size: 1rem;
     font-weight: bold;
@@ -122,21 +115,17 @@ button[type="submit"]:hover {
 
     button[type="submit"] {
         font-size: 0.9rem;
-        /* Reduce button font size on smaller screens */
     }
 
     .input-group input {
         font-size: 0.9rem;
-        /* Adjust input font size for smaller screens */
     }
 }
 
 @media (max-width: 480px) {
     .login-container {
         font-size: 1rem;
-        /* Further reduce font size on very small screens */
         padding: 10px;
-        /* Further reduce padding */
     }
 
     button[type="submit"] {

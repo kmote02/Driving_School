@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
+import React, { useState, useEffect } from 'react'; 
+import { signInWithEmailAndPassword, sendPasswordResetEmail, onAuthStateChanged } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../../firebase';
 import './Login.css';
@@ -12,11 +12,14 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  // Redirect if already logged in
+  // Redirect to dashboard if already logged in
   useEffect(() => {
-    if (auth.currentUser) {
-      navigate('/dashboard'); // Redirect to dashboard if user is already logged in
-    }
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        navigate('/dashboard'); // Redirect to dashboard if user is already logged in
+      }
+    });
+    return () => unsubscribe(); // Clean up subscription
   }, [navigate]);
 
   const handleLogin = (e) => {
@@ -29,21 +32,16 @@ const Login = () => {
     // Firebase authentication logic
     signInWithEmailAndPassword(auth, userId, password)
       .then((userCredential) => {
-        // Signed in successfully
         console.log('User signed in:', userCredential.user);
-        
-        // Redirect to the dashboard after successful login
         navigate('/dashboard'); 
       })
       .catch((error) => {
-        // Handle login errors
         setError(error.message);
         console.error('Login error:', error);
       });
   };
 
   const handleForgotPassword = () => {
-    // Reset message and error before a new action
     setError(null);
     setMessage(null);
 
@@ -64,7 +62,6 @@ const Login = () => {
   };
 
   const handleRegister = () => {
-    // Navigate to the register page
     navigate('/register');
   };
 
@@ -93,8 +90,8 @@ const Login = () => {
               required
             />
           </div>
-          {error && <p className="error-message">{error}</p>} {/* Display error messages */}
-          {message && <p className="success-message">{message}</p>} {/* Display success messages */}
+          {error && <p className="error-message">{error}</p>}
+          {message && <p className="success-message">{message}</p>}
           <button type="submit">Login</button>
         </form>
 
@@ -109,7 +106,7 @@ const Login = () => {
           <button
             type="button"
             className="register-button"
-            onClick={handleRegister} // Navigate to the register page
+            onClick={handleRegister}
           >
             Register
           </button>

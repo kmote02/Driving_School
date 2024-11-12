@@ -9,8 +9,6 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import Profile from './pages/Dashboard/Profile';
 import Settings from './pages/Dashboard/Settings';
 
-
-
 function App() {
   return (
     <Router>
